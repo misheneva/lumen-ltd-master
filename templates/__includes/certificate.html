@@ -1,0 +1,36 @@
+<div class="certificate">
+  <p class="certificate__title">
+    {% if LANGUAGE_CODE == 'ru' %}
+      Вся продукция сертифицирована согласно ГОСТ Р
+    {% else %}
+      All products are certified in accordance with GOST R.
+    {% endif %}
+  </p>
+  <div class="certificate-container">
+    <div class="certificate-container-list js-certificate-slider">
+      <ul class="slides">
+      {% if LANGUAGE_CODE == 'ru' %}
+        {% for certificate in certificate_list %}
+          <li>
+            <a href="{{ certificate.image.url }}" rel="group" class="certificate-container-list-item js-certificate" title="{{ certificate.alt|default:''}}">
+              <img src="{{ certificate.image_resize.url }}" alt="{{ certificate.alt|default:''}}">
+            </a>
+          </li>
+        {% endfor %}
+      {% else %}
+        <li>
+          <a href="{{ STATIC_URL }}img/cert.JPG" rel="group" class="certificate-container-list-item js-certificate" title="">
+            <img src="{{ STATIC_URL }}img/cert.JPG" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="{{ STATIC_URL }}img/cert2.JPG" rel="group" class="certificate-container-list-item js-certificate" title="">
+            <img src="{{ STATIC_URL }}img/cert2.JPG" alt="">
+          </a>
+        </li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
